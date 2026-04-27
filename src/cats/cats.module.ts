@@ -5,9 +5,11 @@ import { BreedsService } from 'src/breeds/breeds.service';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
 import { Cat } from './entities/cat.entity';
+import { Breed } from 'src/breeds/entities/breed.entity';
+import { User } from 'src/users/entities/user.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Cat]), BreedsModule],
+  imports: [TypeOrmModule.forFeature([Cat,Breed,User]), BreedsModule],
   controllers: [CatsController],
   providers: [CatsService, BreedsService],
 })

@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateBreedDto } from './dto/create-breed.dto';
-import { UpdateBreedDto } from './dto/update-breed.dto';
 import { Breed } from './entities/breed.entity';
 
 @Injectable()
@@ -24,7 +23,7 @@ export class BreedsService {
     return `This action returns a #${id} breed`;
   }
 
-  async update(id: number, updateBreedDto: UpdateBreedDto) {
+  async update(id: number) {
     return `This action updates a #${id} breed`;
   }
 

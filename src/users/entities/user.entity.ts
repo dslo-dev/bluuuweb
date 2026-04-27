@@ -1,28 +1,25 @@
-import {
-  Column,
-  DeleteDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { Role } from '../../common/enums/rol.enum';
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, DeleteDateColumn } from "typeorm";
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+   @PrimaryGeneratedColumn()
+   id!: number;
 
-  @Column()
-  name: string;
+   @Column({ type: 'varchar', length: 100, nullable: false })
+   name!: string;
 
-  @Column({ unique: true, nullable: false })
-  email: string;
+   @Column({ type: 'varchar', length: 50, nullable: false, unique: true })
+   email!: string;
 
-  @Column({ nullable: false, select: false })
-  password: string;
+   @Column({ type: 'varchar', nullable: false })
+   password!: string;
 
-  @Column({ type: 'enum', default: Role.USER, enum: Role })
-  role: Role;
+    @Column({ default: 'user', nullable: false  })
+	rol: string
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+   @CreateDateColumn({ name: 'created_at' })
+   createdAt!: Date;
+
+   @DeleteDateColumn({ name: 'deleted_at' })
+   deletedAt!: Date;
 }
